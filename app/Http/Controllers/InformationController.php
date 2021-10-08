@@ -34,8 +34,7 @@ class InformationController extends Controller
                     $res = Auth::user();
 
                     $token = $res->createToken('api_token')->accessToken;
-                    Session::put('email',$email);
-                    Session::put('password',$password);
+                
                    return response()->json(['status_code'=>200,'token'=>$token->token,'email'=>$email,'id'=>$res->id]);
                 }
                 else
