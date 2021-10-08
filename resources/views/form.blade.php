@@ -1,7 +1,7 @@
 @extends('layout/layout')
 @section('form')
 <div class="container">
-	<center><h3 class="mt-5 mb-5">Registration</h3></center>
+	<center><h3 class="mt-5 mb-5">Add List</h3></center>
 <form id="formdata">
 <div class="col-sm-12">
 	<div class="row">
@@ -33,7 +33,7 @@
 			<div class="col-sm-6">
 				 <div class="form-group">
 	    			  <label for="password">Password</label>
-	   				 <input type="text" id="password" name="password" class="form-control"  placeholder="Password">
+	   				 <input type="password" id="password" name="password" class="form-control"  placeholder="Password">
 	  			</div>
 	       </div>
 
@@ -44,7 +44,7 @@
 			<div class="col-sm-6">
 	 			 <div class="form-group">
 	  				  <label for="confirm_password">Confirm Password</label>
-	  				  <input type="text" id="confirm_password" name="confirm_password" class="form-control"  placeholder="Confirm Password">
+	  				  <input type="password" id="confirm_password" name="confirm_password" class="form-control"  placeholder="Confirm Password">
 	 			 </div>
 			</div>
 
@@ -134,7 +134,7 @@
 				<td>Name</td>
 				<td>Email</td>
 				<td>Mobile</td>
-				
+				<td>Status</td>
 				<td>Action</td>
 				
 			</tr>

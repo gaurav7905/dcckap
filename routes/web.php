@@ -15,8 +15,18 @@ use App\Http\Controllers\InformationController;
 */
 
 
-Route::get('/',[InformationController::class,'index']);
+
 Route::post('/registration',[InformationController::class,'store']);
 Route::get('/show',[InformationController::class,'show']);
 Route::post('/delete',[InformationController::class,'destroy']);
 Route::get('/edit',[InformationController::class,'edit']);
+Route::get('/view/{id}',[InformationController::class,'view']);
+Route::get('/',function(){
+	return view('userlogin');
+});
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+Route::get('/user_dashboard/{id}',[InformationController::class,'getData']);

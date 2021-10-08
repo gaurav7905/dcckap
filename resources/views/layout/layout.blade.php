@@ -84,8 +84,8 @@ function clearForm(){
 </script>
  
 <script type="text/javascript">
+
   $(function () {
-    
     var table = $('#table').DataTable({
         processing: true,
         serverSide: true,
@@ -103,34 +103,40 @@ function clearForm(){
             {
                 "mData": null,
                 "bSortable": false,
-                "mRender": function (data) { return '<span class="btn btn-danger" onclick="deletedata(' + data.id + ')">' + 'Delete' + '</span><span class="btn btn-secondary" onclick="editdata(' + data.id + ')">' + 'Edit</span>'; }
+                "mRender": function (data) { 
+                    return '<span class="btn btn-danger" onclick="deletedata(' + data.id + ')">' + 'Delete' + '</span><span class="btn btn-secondary" onclick="editdata(' + data.id + ')">' + 'Edit</span>'; 
+                  }
             },
         ]
     });
     
   });
+  
  function deletedata(id){
- 	 $.ajaxSetup({
-       	headers: {'X-CSRF-Token': $('meta[name="_token"]').attr('content')}
-    });
 
-	$.ajax(
-	{
-		url:'/delete',
-		data:{user_id:id},
-		type:"POST",
-		success:function(data)
-		{
-			if(data.status_code == 200)
-			{
-				toastr.success(data.msg);
-			}
-			if(data.status_code==202)
-			{
-				toastr.error(data.msg);
-			}
-		}
-	})
+  if(confirm("Are you sure ?")){
+     	 $.ajaxSetup({
+           	headers: {'X-CSRF-Token': $('meta[name="_token"]').attr('content')}
+        });
+
+    	$.ajax(
+    	{
+    		url : '/delete',
+    		data : { user_id : id },
+    		type : "POST",
+    		success:function(data)
+    		{
+    			if(data.status_code == 200)
+    			{
+    				toastr.success(data.msg);
+    			}
+    			if(data.status_code==202)
+    			{
+    				toastr.error(data.msg);
+    			}
+    		}
+    	})
+  }
 
 }
 function editdata(id){
@@ -146,7 +152,6 @@ function editdata(id){
              arr = $.parseJSON(response);
              alert(arr);
 			}
-
 		}
 	})
 }
